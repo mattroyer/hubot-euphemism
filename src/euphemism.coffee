@@ -14,8 +14,8 @@ cheerio = require("cheerio")
 
 module.exports = (robot) ->
   robot.respond /(euphemism|euph)( me)?/i, (msg) ->
-    robot.http('http://walkingdead.net/perl/euphemism')
+    robot.http('http://toykeeper.net/programs/mad/euphemisms')
       .get() (err, res, body) ->
         $ = cheerio.load(body)
-        mine = $('td').first().text().trim()
+        mine = $('blockquote').first().text().trim()
         msg.send mine
